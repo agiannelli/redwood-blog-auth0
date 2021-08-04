@@ -1,7 +1,10 @@
 export const QUERY = gql`
-  query FindBlogPostQuery($id: Int!) {
-    blogPost: blogPost(id: $id) {
+  query BlogPostQuery($id: Int!) {
+    post(id: $id) {
       id
+      title
+      body
+      createdAt
     }
   }
 `
@@ -14,6 +17,6 @@ export const Failure = ({ error }) => (
   <div style={{ color: 'red' }}>Error: {error.message}</div>
 )
 
-export const Success = ({ blogPost }) => {
-  return <div>{JSON.stringify(blogPost)}</div>
+export const Success = ({ post }) => {
+  return JSON.stringify(post)
 }
